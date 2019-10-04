@@ -16,7 +16,7 @@ def main():
         files[dirname].append({root: title})
 
     for dirname in files:
-        files[dirname].sort()
+        files[dirname].sort(key=lambda x: list(x.keys())[0])
 
     with open('index.json', 'w') as fout:
         json.dump(files, fout, indent=4)
