@@ -71,9 +71,8 @@ async function fetchBody($body, dir, file) {
 $(function() {
     let index = getIndex();
     index.then(function(res) {
-        console.log(res);
-        let j = JSON.parse(res);
-        console.log(j);
+        console.log(typeof res);
+        let j = ((typeof res) === 'string')? JSON.parse(res): res;
 
         for (let dir of TARGET) {
             let $group = $('<div>');
