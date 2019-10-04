@@ -6,14 +6,12 @@ async function getIndex() {
         headers: {
             'Content-Type': 'text/json',
         },
-        success: r => r,
     });
 }
 
 async function getFile(name) {
     return await $.ajax({
         url: `content/${name}`,
-        success: r => r,
     });
 }
 
@@ -25,7 +23,6 @@ async function enrich(text) {
             'Content-Type': 'text/plain',
         },
         data: text,
-        success: r => r,
     });
 }
 
@@ -34,17 +31,38 @@ function makeHead(name) {
 }
 
 function makeBody(dir, file, title) {
-    let $res = $(`<div id=${dir}-${file} class="unfetched"></div>`);
-    $res.html(`<h2>${title}</h2>`);
-    $res.on('click', function() { fetchBody($(this), dir, file); });
-    return $res;
+    let $panel = $('<div class="panel panel-info"></div>');
+
+    let $panelHead = $('<div></div>');
+    $panelHead.attr({
+        class: 'panel-heading collapse-heading collapsed',
+        id: `${dir}-${file}`,
+        'data-toggle': 'collapse',
+        'data-target': `#${dir}-${file}-body`,
+        'aria-expanded': false,
+    });
+    $panelHead.html(`<h3 class="panel-title">${title}<span class="glyphicon pull-right"></span></h3>`);
+
+    let $panelBody = $('<div></div>');
+    $panelBody.attr({
+        class: 'panel-body panel-collapse collapse unfetched',
+        id: `${dir}-${file}-body`,
+        'aria-expanded': false,
+    });
+
+    $panel.append($panelHead);
+    $panel.append($panelBody);
+
+    $panel.on('click', () => fetchBody($panelBody, dir, file));
+    return $panel;
 }
 
 async function fetchBody($body, dir, file) {
+    console.log('clicked', $body);
     if (!$body.hasClass('unfetched')) return;
 
     let md = await getFile(`${dir}/${file}.md`);
-    let mu = await enrich(md);
+    let mu = await enrich(md.substr(md.search('\n')+1));
     $body.removeClass('unfetched');
     $body.append(mu);
     MathJax.typeset();
