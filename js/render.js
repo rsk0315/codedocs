@@ -71,6 +71,7 @@ async function fetchBody($body, dir, file) {
 $(function() {
     let index = getIndex();
     index.then(function(res) {
+        console.log(res);
         let j = JSON.parse(res);
         console.log(j);
 
