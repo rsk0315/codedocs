@@ -1,6 +1,6 @@
 'use strict';
 
-async function markdownify(text) {
+async function enrich(text) {
     return await $.ajax({
         url: 'https://api.github.com/markdown/raw',
         type: 'POST',
@@ -13,9 +13,10 @@ async function markdownify(text) {
 }
 
 $(function() {
-    let text = '# hello\n**hello**';
-    markdownify(text).then(function(mu) {
+    let text = '# hello\n**hello**\n$n\\log n$';
+    enrich(text).then(function(mu) {
         console.log(mu);
         $('#test').html(mu);
+        MathJax.typeset();
     });
 });
