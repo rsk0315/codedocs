@@ -182,6 +182,6 @@ Content in the first column | Content in the second column
 Any word wrapped with two tildes (like `~~this~~`) will appear ~~crossed out~~.
 
 # Emoji
-GitHub supports emoji! 8-) :sunglasses:
+GitHub supports emoji! :sunglasses: (`:sunglasses:`):
 
 To see a list of every image they support, check out the [Emoji Cheat Sheet](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md).
