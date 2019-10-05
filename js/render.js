@@ -26,6 +26,22 @@ async function enrich(text) {
     });
 }
 
+function format($body) {
+    $.each($body.find('li'), function(i, el) {
+        let match = el.innerHTML.match(/^\s*\[([ xX])\]/);
+        if (match === null) return;
+
+        let checked = (match[1] != ' ');
+        let pos = el.innerHTML.indexOf(']') + 1;
+        el.innerHTML = el.innerHTML.substr(pos);
+        let $cb = $('<input type="checkbox">');
+        $cb.prop({checked, disabled: true}).css({
+            margin: '0 .2em .25em -1.25em'
+        });
+        $(el).css({'list-style-type': 'none'}).prepend($cb);
+    });
+}
+
 function makeHead(name, title) {
     return $(`<span class="head" id="head-${name}"><h1>${title}</h1></span>`);
 }
@@ -61,10 +77,19 @@ async function fetchBody($body, dir, file) {
     if (!$body.hasClass('unfetched')) return;
 
     let md = await getFile(`${dir}/${file}.md`);
-    let mu = await enrich(md.substr(md.search('\n')+1));
-    $body.removeClass('unfetched');
-    $body.append(mu);
-    MathJax.typeset();
+    md = md.substr(md.search('\n') + 1);
+    let mu = await enrich(md);
+    let success = true;
+    if (success) {
+        // fetch はできていて，enrich が失敗しているだけ．
+        // ほんとは enrich だけのやり直しができるとよい．
+        $body.removeClass('unfetched');
+        $body.html(mu);
+        MathJax.typeset();
+        format($body);
+    } else {
+        $body.text(md);
+    }
 }
 
 function jumpTo(dir) {
