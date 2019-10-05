@@ -1,4 +1,13 @@
 {
+    "about": {
+        "contents": [
+            {
+                "id": "about",
+                "title": "\u3064\u304f\u308a\u304b\u305f"
+            }
+        ],
+        "title": "\u3053\u306e\u30da\u30fc\u30b8\u306b\u3064\u3044\u3066"
+    },
     "notation": {
         "contents": [
             {

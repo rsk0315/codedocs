@@ -2,4 +2,5 @@
 
 const TARGET = [
     'notation',
+    'about',
 ];
