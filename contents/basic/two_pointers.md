@@ -17,7 +17,7 @@ $i$, $j$ は各々たかだか $n+1$ 回しか移動しないので，たかだ�
 実装は次のようになる．
 ```c++
 template <typename Sequence, typename OutputIt>
-OutputIt two_pointers(Sequence sq, OutputIt d_first) {
+OutputIt partition_points(Sequence sq, OutputIt d_first) {
   sq.initialize();
   for (size_type i = 0; i < sq.size(); ++i) {
     while (sq.end_index() < sq.size() && !sq.pred()) sq.push();
