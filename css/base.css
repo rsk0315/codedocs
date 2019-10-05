@@ -23,6 +23,17 @@ code {
     border: 1px solid #e1e1e8;
 }
 
-pre > code {
+pre>code {
     border: none
+}
+
+.nav>li>a {
+    padding: 15px 30px 10px 20px;
+}
+
+.collapse-heading span.pull-right:before {
+    content: '\e113';
+}
+.collapse-heading.collapsed span.pull-right:before {
+    content: '\e114';
 }
