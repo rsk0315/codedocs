@@ -23,7 +23,29 @@ async function enrich(text) {
             'Content-Type': 'text/plain',
         },
         data: text,
-    });
+    }).then(
+        data => data,
+        error => undefined,
+    );
+}
+
+function htmlSpecialChars(text) {
+    return text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+function enrichFallback(text) {
+    return htmlSpecialChars(text).replace(/\n/g, '<br>');
+}
+
+function alertIcon(text = '') {
+    // return `<span><i class="glyphicon glyphicon-exclamation-sign"></i> ${text}</span>`;
+    // return `<span><i class="glyphicon glyphicon-remove-sign danger"></i> ${text}</span>`;
+    return `<span><i class="glyphicon glyphicon-remove-circle" style="color: #d73a49;"></i> ${text}</span>`;
 }
 
 function format($body) {
@@ -80,7 +102,7 @@ async function fetchBody($body, dir, file) {
     let md = await getFile(`${dir}/${file}.md`);
     md = md.substr(md.search('\n') + 1);
     let mu = await enrich(md);
-    let success = true;
+    let success = (typeof mu !== 'undefined');
     if (success) {
         // fetch はできていて，enrich が失敗しているだけ．
         // ほんとは enrich だけのやり直しができるとよい．
@@ -89,7 +111,10 @@ async function fetchBody($body, dir, file) {
         MathJax.typeset();
         format($body);
     } else {
-        $body.text(md);
+        $body.text('');
+        $body.append(alertIcon('API の上限に達したので markdown 形式のままで表示しています．'));
+        $body.append('<hr>');
+        $body.append(enrichFallback(md));
     }
 }
 
