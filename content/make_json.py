@@ -29,9 +29,8 @@ def make_json():
         cfp.read(index_file)
         index[dirname]['title'] = cfp['INDEX']['title']
 
-    print(json.dumps(index, indent=4))
-    # with open('index.json', 'w') as fout:
-    #     json.dump(index, fout, indent=4)
+    with open('index.json', 'w') as fout:
+        json.dump(index, fout, indent=4)
 
 def main():
     make_json()
