@@ -1,5 +1,5 @@
 % Fizz Buzz
-$i\bmod{3}$と$i\bmod{5}$で場合分けする遊び．
+$i\bmod{3}$ と $i\bmod{5}$ で場合分けする遊び．
 ```c
 #include <stdio.h>
 
