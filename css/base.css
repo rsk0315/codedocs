@@ -1,7 +1,28 @@
+#main {
+    padding: 60px 40px 20px;
+}
+
 .head h1 {
     border-bottom: 1px solid #eee;
 }
 
 body {
-    font-family: 'Lato';
+    font-family: Lato;
+}
+
+code, pre {
+    font-family: TheSansMonoCd, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+code {
+    padding: 3px 3px 1px;
+    margin: 0;
+    border-width: 0;
+    color: #d72b3f;
+    background-color: #f7f7f9;
+    border: 1px solid #e1e1e8;
+}
+
+pre > code {
+    border: none
 }
