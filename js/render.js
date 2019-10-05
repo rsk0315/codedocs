@@ -58,7 +58,6 @@ function makeBody(dir, file, title) {
 }
 
 async function fetchBody($body, dir, file) {
-    console.log('clicked', $body);
     if (!$body.hasClass('unfetched')) return;
 
     let md = await getFile(`${dir}/${file}.md`);
@@ -71,7 +70,6 @@ async function fetchBody($body, dir, file) {
 $(function() {
     let index = getIndex();
     index.then(function(res) {
-        console.log(typeof res);
         let j = ((typeof res) === 'string')? JSON.parse(res): res;
 
         for (let dir of TARGET) {
@@ -81,7 +79,6 @@ $(function() {
             $group.append($head);
 
             let ls = j[dir];
-            console.log(ls);
 
             for (let d of ls) {
                 let file = Object.keys(d)[0];
