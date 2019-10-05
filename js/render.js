@@ -40,6 +40,7 @@ function format($body) {
         });
         $(el).css({'list-style-type': 'none'}).prepend($cb);
     });
+    $body.find('a').attr({target: '_blank'});
 }
 
 function makeHead(name, title) {
