@@ -2,4 +2,5 @@
 
 const TARGET = [
     'test',
+    'test2',
 ];
