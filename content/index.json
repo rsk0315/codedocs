@@ -1,10 +1,24 @@
 {
-    "test": [
-        {
-            "test": "\u3066\u3059\u3068"
-        },
-        {
-            "test2": "\u3066\u3059\u30682"
-        }
-    ]
+    "test": {
+        "contents": [
+            {
+                "id": "test",
+                "title": "\u3066\u3059\u3068"
+            },
+            {
+                "id": "test2",
+                "title": "\u3066\u3059\u30682"
+            }
+        ],
+        "title": "\u3066\u3059\u3068"
+    },
+    "test2": {
+        "contents": [
+            {
+                "id": "fizzbuzz",
+                "title": "Fizz Buzz"
+            }
+        ],
+        "title": "\u3066\u3059\u30682"
+    }
 }
