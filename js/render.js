@@ -2,7 +2,7 @@
 
 async function getIndex() {
     return await $.ajax({
-        url: 'content/index.json',
+        url: 'contents/index.json',
         headers: {
             'Content-Type': 'text/json',
         },
@@ -11,7 +11,7 @@ async function getIndex() {
 
 async function getFile(name) {
     return await $.ajax({
-        url: `content/${name}`,
+        url: `contents/${name}`,
     });
 }
 
@@ -26,8 +26,8 @@ async function enrich(text) {
     });
 }
 
-function makeHead(name) {
-    return $(`<span class="head"><h1>${name}</h1></span>`);
+function makeHead(name, title) {
+    return $(`<span class="head" id="head-${name}"><h1>${title}</h1></span>`);
 }
 
 function makeBody(dir, file, title) {
@@ -36,9 +36,9 @@ function makeBody(dir, file, title) {
     let $panelHead = $('<div></div>');
     $panelHead.attr({
         class: 'panel-heading collapse-heading collapsed',
-        id: `${dir}-${file}`,
+        id: `panel-${dir}-${file}`,
         'data-toggle': 'collapse',
-        'data-target': `#${dir}-${file}-body`,
+        'data-target': `#panel-${dir}-${file}-body`,
         'aria-expanded': false,
     });
     $panelHead.html(`<h3 class="panel-title">${title}<span class="glyphicon pull-right"></span></h3>`);
@@ -46,7 +46,7 @@ function makeBody(dir, file, title) {
     let $panelBody = $('<div></div>');
     $panelBody.attr({
         class: 'panel-body panel-collapse collapse unfetched',
-        id: `${dir}-${file}-body`,
+        id: `panel-${dir}-${file}-body`,
         'aria-expanded': false,
     });
 
@@ -67,6 +67,12 @@ async function fetchBody($body, dir, file) {
     MathJax.typeset();
 }
 
+function jumpTo(dir) {
+    $('html, body').animate({
+        scrollTop: $(`#head-${dir}`).offset().top - 80,
+    }, 500);
+}
+
 $(function() {
     let index = getIndex();
     index.then(function(res) {
@@ -75,14 +81,19 @@ $(function() {
         for (let dir of TARGET) {
             let $group = $('<div>');
 
-            let $head = makeHead(dir);
+            let dirTitle = j[dir].title;
+            let $a = $(`<a>${dirTitle}</a>`);
+            $a.on('click', () => jumpTo(dir));
+            $('#jumpto').append($('<li>').html($a));
+
+            let $head = makeHead(dir, dirTitle);
             $group.append($head);
 
-            let ls = j[dir];
+            let ls = j[dir].contents;
 
             for (let d of ls) {
-                let file = Object.keys(d)[0];
-                let title = d[file];
+                let file = d.id;
+                let title = d.title;
 
                 let $body = makeBody(dir, file, title);
                 $group.append($body);
@@ -92,3 +103,19 @@ $(function() {
         }
     });
 });
+
+// [
+//     'test': {
+//         'title': 'てすと',
+//         'contents': [
+//             {
+//                 'id': 'test',
+//                 'title': 'てすと',
+//             },
+//             {
+//                 'id': 'test2',
+//                 'title': 'てすと2',
+//             }
+//         ]
+//     }
+// ]
