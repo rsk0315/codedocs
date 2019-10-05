@@ -8,6 +8,19 @@
         ],
         "title": "\u3053\u306e\u30da\u30fc\u30b8\u306b\u3064\u3044\u3066"
     },
+    "basic": {
+        "contents": [
+            {
+                "id": "cumulative_sum",
+                "title": "\u7d2f\u7a4d\u548c"
+            },
+            {
+                "id": "imos",
+                "title": "\u3044\u3082\u3059\u6cd5"
+            }
+        ],
+        "title": "\u521d\u7d1a\u30c6\u30af"
+    },
     "notation": {
         "contents": [
             {
