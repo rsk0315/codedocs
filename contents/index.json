@@ -11,12 +11,24 @@
     "basic": {
         "contents": [
             {
+                "id": "binary_search",
+                "title": "\u4e8c\u5206\u63a2\u7d22 (1)"
+            },
+            {
+                "id": "binary_search_2",
+                "title": "\u4e8c\u5206\u63a2\u7d22 (2)"
+            },
+            {
                 "id": "cumulative_sum",
                 "title": "\u7d2f\u7a4d\u548c"
             },
             {
                 "id": "imos",
                 "title": "\u3044\u3082\u3059\u6cd5"
+            },
+            {
+                "id": "two_pointers",
+                "title": "\u5c3a\u53d6\u308a\u6cd5"
             }
         ],
         "title": "\u521d\u7d1a\u30c6\u30af"

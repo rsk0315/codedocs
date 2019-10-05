@@ -2,6 +2,7 @@
 
 const TARGET = [
     'basic',
+    // 'intermediate',
 
     'notation',
     'about',
