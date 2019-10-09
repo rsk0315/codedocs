@@ -101,7 +101,6 @@ function fetchBody($body, dir, file) {
 
     getFile(`${dir}/${file}.md`)
         .then(md => {
-            console.log(md);
             md = md.substr(md.search('\n') + 1);
             return enrich(md);
         })
