@@ -21,7 +21,7 @@ $O(\log n)$ 倍だけ遅くすることを許せば動的にもできる．
   - 区間 $[s, t)$ のうち，$x$ 未満の要素の個数，$x$ の個数，$x$ より大きい要素の個数をまとめて返す．
 - $\mathtt{xored\\_rank\\_3way}(x, y, s, t)$
   - 区間 $[s, t)$ のうちの要素 $a$ に対して $y$ と排他的論理和をとった値 $a\oplus y$ と $x$ を比較し，$\mathtt{rank\\_3way}$ 同様に個数を返す．
-  - $\\{i\in[s, t)\mid (a_i\oplus y) < x\\}$ の要素数．$=$ と $>$ についても同時に返す．
+  - $\\{i\in[s, t)\mid (a_i\oplus y) \lesseqgtr x\\}$ の要素数を同時に返す．
 - $\mathtt{min\\_greater}(x, s, t)$
   - 区間 $[s, t)$ の要素のうち，$x$ より大きい要素のうち最小の値を返す．
 - $\mathtt{min\\_greater\\_equal}(x, s, t)$
