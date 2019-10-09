@@ -94,3 +94,7 @@ pre>code {
     background-color: #fff;
     border-top: 1px solid #c6cbd1;
 }
+
+.MathJax.CtxtMenu_Attached_0 {
+    overflow-x: scroll;
+}
