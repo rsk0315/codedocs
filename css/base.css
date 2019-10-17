@@ -129,7 +129,7 @@ pre>code {
     display: flex;
     font-size: 1.5em;
     padding-bottom: 8px;
-    margin: 30px 0 10px;
+    margin: 30px 0 3px;
     line-height: 1.38463;
     font-weight: 400;
     color: rgba(var(--sk_foreground_max_solid,97, 96, 97), 1);
