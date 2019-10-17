@@ -70,7 +70,7 @@ function makeHead(name, title) {
 }
 
 function makeBody(dir, file, title) {
-    let $panel = $('<div class="panel panel-info"></div>');
+    let $panel = $('<div class="panel panel-docs"></div>');
 
     let $panelHead = $('<div></div>');
     $panelHead.attr({
