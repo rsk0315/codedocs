@@ -66,9 +66,16 @@ pre>code {
 .panel-body h6 { font-size: .85em; }
 
 .panel-body blockquote:before {
-    display: block;
+    /* display: block; */
+    /* width: 4px; */
+    /* background: rgba(var(--sk_foreground_low_solid, 221, 221, 221), 1); */
+
+    /* xxx */
+    flex-shrink: 0;
     width: 4px;
-    background: rgba(var(--sk_foreground_low_solid, 221, 221, 221), 1);
+    background-color: rgba(var(--sk_foreground_low_solid, 221, 221, 221), 1);
+    border-radius: 8px;
+
 }
 .panel-body blockquote {
     font-size: 1em;
