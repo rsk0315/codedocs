@@ -62,8 +62,8 @@ pre>code {
 .panel-body h2 { font-size: 1.5em; }
 .panel-body h3 { font-size: 1.25em; }
 .panel-body h4 { font-size: 1em; }
-.panel-body h5 { font-size: .85em; }
-.panel-body h6 { font-size: .875em; }
+.panel-body h5 { font-size: .875em; }
+.panel-body h6 { font-size: .85em; }
 
 .panel-body blockquote:before {
     display: block;
