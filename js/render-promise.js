@@ -63,6 +63,15 @@ function format($body) {
         $(el).css({'list-style-type': 'none'}).prepend($cb);
     });
     $body.find('a').attr({target: '_blank'});
+    $.each($body.find('blockquote'), function(i, el) {
+        $(el).replaceWith(
+            '<div class="blockquote-wrapper">'
+                + '<div class="blockquote-container">'
+                + '<div class="blockquote-border">&nbsp;</div>'
+                + `<div class="blockquote-content">${el.innerHTML}</div>`
+                + '</div></div>');
+    });
+    // $body.find('blockquote').prepend($('<div class="bq">&nbsp;</div>'));
 }
 
 function makeHead(name, title) {

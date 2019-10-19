@@ -65,23 +65,42 @@ pre>code {
 .panel-body h5 { font-size: .875em; }
 .panel-body h6 { font-size: .85em; }
 
-.panel-body blockquote:before {
-    /* display: block; */
-    /* width: 4px; */
-    /* background: rgba(var(--sk_foreground_low_solid, 221, 221, 221), 1); */
-
-    /* xxx */
+.panel-body div.blockquote-border {
     flex-shrink: 0;
     width: 4px;
     background-color: rgba(var(--sk_foreground_low_solid, 221, 221, 221), 1);
     border-radius: 8px;
 
+    flex-direction: column;
+    -webkit-margin-start: 20px;
+    -webkit-margin-end: 1em;
+}
+.panel-body div.blockquote-content {
+    color: #6a737d;
 }
 .panel-body blockquote {
     font-size: 1em;
     padding: 0 1em;
     color: #6a737d;
     border-left: .25em solid #dfe2e5;
+}
+.panel-body .blockquote-content p:last-child {
+    margin: 0;
+}
+.panel-body .blockquote-wrapper {
+    margin: 10px 0 20px 0px;
+}
+.panel-body .blockquote-container {
+    /* font-size: 1em; */
+    /* padding: 0 1em; */
+    /* color: #6a737d; */
+    /* border-left: .25em solid #dfe2e5; */
+    display: inline-flex;
+
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: -20px;
+    -webkit-margin-end: -20px;
 }
 
 .panel-body table {
