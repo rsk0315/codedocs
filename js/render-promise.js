@@ -49,11 +49,30 @@ function alertIcon(text = '') {
 }
 
 function format($body) {
+    let blockquoteBefore = (
+        '<div class="blockquote-wrapper">'
+            + '<div class="blockquote-container">'
+            + '<div class="blockquote-border">&nbsp;</div>'
+            + '<div class="blockquote-content">');
+    let blockquoteAfter = '</div></div></div>';
+    $.each($body.find('blockquote'), function(i, el) {
+        console.log(el.innerHTML);
+        $(el).replaceWith(
+            blockquoteBefore +
+                el.innerHTML
+                    .replace(/<blockquote>/g, blockquoteBefore)
+                    .replace(/<\/blockquote>/g, blockquoteAfter)
+                + blockquoteAfter);
+    });
+
     $.each($body.find('li'), function(i, el) {
+        console.log(el.innerHTML);
         let match = el.innerHTML.match(/^\s*\[([ xX])\]/);
+        console.log(match);
         if (match === null) return;
 
         let checked = (match[1] != ' ');
+        console.log(checked);
         let pos = el.innerHTML.indexOf(']') + 1;
         el.innerHTML = el.innerHTML.substr(pos);
         let $cb = $('<input type="checkbox">');
@@ -63,15 +82,6 @@ function format($body) {
         $(el).css({'list-style-type': 'none'}).prepend($cb);
     });
     $body.find('a').attr({target: '_blank'});
-    $.each($body.find('blockquote'), function(i, el) {
-        $(el).replaceWith(
-            '<div class="blockquote-wrapper">'
-                + '<div class="blockquote-container">'
-                + '<div class="blockquote-border">&nbsp;</div>'
-                + `<div class="blockquote-content">${el.innerHTML}</div>`
-                + '</div></div>');
-    });
-    // $body.find('blockquote').prepend($('<div class="bq">&nbsp;</div>'));
 }
 
 function makeHead(name, title) {
