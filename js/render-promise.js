@@ -76,9 +76,10 @@ function format($body) {
         let pos = el.innerHTML.indexOf(']') + 1;
         el.innerHTML = el.innerHTML.substr(pos);
         let $cb = $('<input type="checkbox">');
-        $cb.prop({checked, disabled: true}).css({
-            margin: '0 .2em .25em -1.25em'
-        });
+        $cb.prop({checked, disabled: true});
+            // .css({
+            //     margin: '0 .15em .25em -1.2em'
+            // });
         $(el).css({'list-style-type': 'none'}).prepend($cb);
     });
     $body.find('a').attr({target: '_blank'});
