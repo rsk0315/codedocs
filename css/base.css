@@ -139,6 +139,7 @@ pre>code {
 /*     vertical-align: middle; */
 /* } */
 .panel-body input[type=checkbox][disabled] {
+    margin: 0 .15em .25em -1.2em;
     vertical-align: baseline;
     cursor: inherit;
     box-sizing: border-box;
