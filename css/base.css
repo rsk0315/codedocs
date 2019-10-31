@@ -135,9 +135,13 @@ pre>code {
     overflow-x: scroll;
 }
 
-.panel-body input[type=checkbox]:before {
-    vertical-align: middle;
-    cursor: auto;
+/* .panel-body input[type=checkbox]:before { */
+/*     vertical-align: middle; */
+/* } */
+.panel-body input[type=checkbox][disabled] {
+    vertical-align: baseline;
+    cursor: inherit;
+    box-sizing: border-box;
 }
 
 .head h1 {
