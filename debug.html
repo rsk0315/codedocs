@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="css/github-light.css">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous">
+    </script>
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+    <!-- theme
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+          crossorigin="anonymous">
+    -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous">
+    </script>
+
+    <script>
+      MathJax = {
+          tex: {
+              packages: ['base', 'require'],
+              inlineMath: [['$', '$'], ['$$', '$$']],
+          },
+          startup: {
+              requireMap: {
+                  AMSmath: 'ams',
+                  AMSsymbols: 'ams',
+                  AMScd: 'amsCd',
+                  HTML: 'html',
+                  noErrors: 'noerrors',
+                  noUndefined: 'noundefined',
+              },
+              ready: function() {
+                  let CommandMap = MathJax._.input.tex.SymbolMap.CommandMap;
+                  let requireMap = MathJax.config.startup.requireMap;
+                  let RequireLoad = MathJax._.input.tex.require.RequireConfiguration.RequireLoad;
+                  let RequireMethods = {
+                      Require: function(parser, name) {
+                          let required = parser.GetArgument(name);
+                          if (required.match(/[^_a-zA-Z0-9]/) || required === '') {
+                              throw new TexError('BadPackageName', 'Argument for %1 is not a valid package name', name);
+                          }
+                          if (requireMap.hasOwnProperty(required)) {
+                              required = requireMap[required];
+                          }
+                          RequireLoad(parser, required);
+                      }
+                  };
+                  new CommandMap('require', {require: 'Require'}, RequireMethods);
+                  return MathJax.startup.defaultReady();
+              }
+          },
+      };
+    </script>
+    <script type="text/javascript"
+            id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js">
+    </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,400,700"
+          rel="stylesheet" type="text/css">
+
+    <script src="js/constants.js"></script>
+    <!-- <script src="js/render.js"></script> -->
+    <script src="js/render-promise.js"></script>
+
+    <link rel="stylesheet" href="css/base.css">
+  </head>
+  <body>
+    <!-- navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed"
+                data-toggle="collapse" data-target="#navbar-collapse"
+                aria-expanded="false">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="/docs" class="navbar-brand" style="color: white;">Documents</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">      
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#"
+               role="button" aria-haspopup="true" aria-expanded="false">
+              <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+              目次 <span class="caret"></span>
+            </a>
+            <ul id="jumpto" class="dropdown-menu">
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- end of navigation -->
+
+    <div id="main-div" class="float-container">
+      <div id="main" class="container">
+        <h1>Documents</h1>
+        <p>
+          えびちゃんのライブラリや典型テクについてのメモ置き場（予定）．
+        </p>
+        <hr>
+        <span class="hidden">$\require{ams}$</span>
+
+        <!-- xxx -->
+        <div class="panel-body">
+          <table>
+            <thead>
+              <tr>
+                <th>a</th>
+                <th>a</th>
+                <th>a</th>
+                <th>a</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>a</td><td>a</td><td>a</td><td>a</td></tr>
+              <tr><td>a</td><td>a</td><td>a</td><td>a</td></tr>
+              <tr><td>a</td><td>a</td><td>a</td><td>a</td></tr>
+            </tbody>
+          </table>
+
+          <input type="checkbox" checked disabled> x
+          <ul>
+            <li><input type="checkbox" checked disabled> x</li>
+            <li><input type="checkbox" disabled> x</li>
+          </ul>
+        </div>
+        <!-- /xxx -->
+      </div>
+    </div>
+  </body>
+</html>
