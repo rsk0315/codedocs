@@ -56,7 +56,7 @@ function format($body) {
             + '<div class="blockquote-content">');
     let blockquoteAfter = '</div></div></div>';
     $.each($body.find('blockquote'), function(i, el) {
-        console.log(el.innerHTML);
+        // console.log(el.innerHTML);
         $(el).replaceWith(
             blockquoteBefore +
                 el.innerHTML
@@ -66,19 +66,19 @@ function format($body) {
     });
 
     $.each($body.find('li'), function(i, el) {
-        console.log(el.innerHTML);
+        // console.log(el.innerHTML);
         let match = el.innerHTML.match(/^\s*\[([ xX])\]/);
-        console.log(match);
+        // console.log(match);
         if (match === null) return;
 
         let checked = (match[1] != ' ');
-        console.log(checked);
+        // console.log(checked);
         let pos = el.innerHTML.indexOf(']') + 1;
         el.innerHTML = el.innerHTML.substr(pos);
         let $cb = $('<input type="checkbox">');
         $cb.prop({checked, disabled: true})
             .css({
-                margin: '0 .15em .25em -1.2em',
+                margin: '0 0.15em 0.25em -1.2em',
                 'vertical-align': 'baseline',
             });
         $(el).css({'list-style-type': 'none'}).prepend($cb);
