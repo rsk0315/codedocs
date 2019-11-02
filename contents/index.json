@@ -48,6 +48,10 @@
                 "title": "\u30c0\u30d6\u30ea\u30f3\u30b0"
             },
             {
+                "id": "mo",
+                "title": "Mo's algorithm"
+            },
+            {
                 "id": "parallel_binary_search",
                 "title": "\u4e26\u5217\u4e8c\u5206\u63a2\u7d22"
             }
