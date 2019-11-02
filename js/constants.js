@@ -2,7 +2,7 @@
 
 const TARGET = [
     'basic',
-    // 'intermediate',
+    'intermediate',
 
     'library-ds',
 
