@@ -8,7 +8,7 @@ $O(\log n)$ 倍だけ遅くすることを許せば動的にもできる．
 
 ---
 
-以下の基本操作が $O(\log\sigma\cdot\log\log n)$ 時間で処理できる．本来は $\log\log n$ の項はなくせるはず？
+以下の基本操作が $O(\log\sigma\cdot\log\log n)$ 時間で処理できる．本来は $\log\log n$ の項はなくせるはず．この項は bitvector の `rank`, `select` の計算量に由来しており，本来これは $O(1)$ でできるため．
 - $\mathtt{rank}(x, s, t)$
   - 区間 $[s, t)$ 内の $x$ の個数を返す．
 - $\mathtt{select}(x, k, s)$
@@ -32,7 +32,7 @@ $O(\log n)$ 倍だけ遅くすることを許せば動的にもできる．
 - $\mathtt{max\\_less\\_equal}(x, s, t)$
   - 区間 $[s, t)$ の要素のうち，$x$ 以下の要素のうち最大の値を返す．
 
-さらに，以下のクエリについて $O(\log\sigma\cdot\log n\cdot\log\log n)$ 時間で処理できる．さすがに重い．もしかすると $\log n$ の項を落とせる？ できなさそう．
+さらに，以下のクエリについて $O(\log\sigma\cdot\log n\cdot\log\log n)$ 時間で処理できる．さすがに重い．もしかすると $\log n$ の項を落とせる？ できなさそう．上の演算を用いて二分探索して求めている．
 
 - $\mathtt{select\\_greater}(x, k, s)$
   - 区間 $[s, t)$ のうち，$x$ より大きい要素の $k$ 個目の出現位置を返す．

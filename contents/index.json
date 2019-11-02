@@ -36,6 +36,14 @@
     "library-ds": {
         "contents": [
             {
+                "id": "fibonacci_heap",
+                "title": "\u30d5\u30a3\u30dc\u30ca\u30c3\u30c1\u30d2\u30fc\u30d7"
+            },
+            {
+                "id": "segment_tree",
+                "title": "\u30bb\u30b0\u30e1\u30f3\u30c8\u6728"
+            },
+            {
                 "id": "wavelet_matrix",
                 "title": "\u30a6\u30a7\u30fc\u30d6\u30ec\u30c3\u30c8\u884c\u5217"
             }
