@@ -2,25 +2,27 @@
 
 陽に配列を持つことができない場合でも，二分探索は適用できうる．
 
-ある述語 $P$ に対して境界 $p$ があり，以下が成り立つ場合を考える．
-- $P(x)$ holds, if $x \ge p$
-- $P(x)$ does not hold, if $x < p$
+ある述語 $P$ に対して境界 $p$ があり，以下の条件が成り立つ場合を考える．
+- $P(x)$ holds, if $x \le p$
+- $P(x)$ does not hold, if $x > p$
+
+すなわち，$x\in(-\infty, p)$ では $P(x)$ は成り立ち，$x\in[p, \infty)$ では成り立たないとする．
 
 このとき，$p$ を二分探索で求めることができる．
-$P(x)$ が成り立たない十分小さい $x_{\text{LB}}$ と，$P(x)$ が成り立つ十分大きい $x_{\text{UB}}$ をとっておき，以下の手順を行う．
+$P(x)$ が成り立つ十分小さい $x_{\text{LB}}$ と，$P(x)$ が成り立たない十分大きい $x_{\text{UB}}$ をとっておき，以下の手順を行う．
 
 ```c++
 template <typename Tp, typename Predicate>
 Tp partition_point(Tp lb, Tp ub, Predicate, pred) {
   while (ub-lb > 1) {
     Tp mid = (lb+ub) / 2;
-    (!pred(mid)? lb: ub) = mid;
+    (pred(mid)? lb: ub) = mid;
   }
   return ub;
 }
 ```
 
-これにより，$\log_2 (x_{\text{UB}}-x_{\text{LB}})+O(1)$ 回の $P$ の計算により境界を求めることができる．
+$\log_2 (x_{\text{UB}}-x_{\text{LB}})+O(1)$ 回の $P$ の計算により境界を求めることができる．
 
 ---
 
@@ -30,8 +32,12 @@ $x_{\text{UB}}$ と $x_{\text{LB}}$ の初期値の差を $\Delta x$ として�
 
 ---
 
-与えられた条件を満たす $x$ の最大値や最小値などを求めるときに使える．
+与えられた条件 $P$ を満たす $x$ の最大値や最小値などを求めるときに使える．
 
 - [ABC 023 D](https://atcoder.jp/contests/abc023/tasks/abc023_d)
 - [ABC 026 D](https://atcoder.jp/contests/abc026/tasks/abc026_d)
 - [ABC 034 D](https://atcoder.jp/contests/abc034/tasks/abc034_d)
+
+条件 $P$ を満たす $x$ の最大値を直接求めるのは難しい場合に，$P$ が前述のように境界を持つ述語であれば二分探索で求められる．
+
+すなわち，$x$ を決め打ちしたときに $P(x)$ が成り立つかどうかの判定問題を解ければよいことになる．
