@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- <link rel="stylesheet" href="css/github-light.css"> -->
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+          integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+          crossorigin="anonymous">
+  </script>
+
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+          integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+          crossorigin="anonymous">
+  </script>
+
+  <script>
+    MathJax = {
+        tex: {
+            packages: ['base', 'require'],
+            inlineMath: [['$', '$'], ['$$', '$$']],
+        },
+        startup: {
+            requireMap: {
+                AMSmath: 'ams',
+                AMSsymbols: 'ams',
+                AMScd: 'amsCd',
+                HTML: 'html',
+                noErrors: 'noerrors',
+                noUndefined: 'noundefined',
+            },
+            ready: function() {
+                let CommandMap = MathJax._.input.tex.SymbolMap.CommandMap;
+                let requireMap = MathJax.config.startup.requireMap;
+                let RequireLoad = MathJax._.input.tex.require.RequireConfiguration.RequireLoad;
+                let RequireMethods = {
+                    Require: function(parser, name) {
+                        let required = parser.GetArgument(name);
+                        if (required.match(/[^_a-zA-Z0-9]/) || required === '') {
+                            throw new TexError('BadPackageName', 'Argument for %1 is not a valid package name', name);
+                        }
+                        if (requireMap.hasOwnProperty(required)) {
+                            required = requireMap[required];
+                        }
+                        RequireLoad(parser, required);
+                    }
+                };
+                new CommandMap('require', {require: 'Require'}, RequireMethods);
+                return MathJax.startup.defaultReady();
+            }
+        },
+    };
+  </script>
+  <script type="text/javascript"
+          id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js">
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,400,700"
+        rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/base.css">
+
+  <link rel="stylesheet" href="/css/styles/github-gist.css">
+  <script src="/js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <style>
+    .hljs {
+      background: inherit;
+      padding: 0;
+      border-radius: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div id="main-nav" class="float-container">
+  <div id="main" class="container">
+    <div class="panel panel-docs">
+      <div class="panel-heading collapse-heading"><h3>xxx</h3></div>
+      <div class="panel-body panel-collapsed">
+
+<p>% Markdown</p>
+<p>Original: https://guides.github.com/features/mastering-markdown/</p>
+<h1>Headers</h1>
+<h1>This is an &lt;h1&gt; tag</h1>
+<h2>This is an &lt;h2&gt; tag</h2>
+<h6>This is an &lt;h6&gt; tag</h6>
+<pre><code class="plaintext"># This is an \&lt;h1\&gt; tag
+## This is an \&lt;h2\&gt; tag
+###### This is an &amp;lt;h6&amp;gt; tag
+</code></pre>
+<h1>Emphasis</h1>
+<p><em>This text will be italic</em>
+<em>This will also be italic</em></p>
+<p><strong>This text will be bold</strong>
+<strong>This will also be bold</strong></p>
+<p><em>You <strong>can</strong> combine them</em></p>
+<pre><code class="plaintext">*This text will be italic*
+_This will also be italic_
+
+**This text will be bold**
+__This will also be bold__
+
+_You **can** combine them_
+</code></pre>
+<h1>Lists</h1>
+<h2>Unordered</h2>
+<ul>
+<li>Item 1</li>
+<li>Item 2
+<ul>
+<li>Item 2a</li>
+<li>Item 2b</li>
+</ul>
+</li>
+</ul>
+<pre><code class="plaintext">* Item 1
+* Item 2
+  * Item 2a
+  * Item 2b
+</code></pre>
+<h2>Ordered</h2>
+<ol>
+<li>Item 1</li>
+<li>Item 2</li>
+<li>Item 3</li>
+<li>Item 3a</li>
+<li>Item 3b</li>
+</ol>
+<pre><code class="plaintext">1. Item 1
+1. Item 2
+1. Item 3
+  1. Item 3a
+  1. Item 3b
+</code></pre>
+<h1>Images</h1>
+<p><img src="https://octodex.github.com/images/yaktocat.png" alt="Image of Yaktocat" /></p>
+<pre><code class="plaintext">![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+Format: ![Alt Text](url)
+</code></pre>
+<h1>Links</h1>
+<p>https://github.com - automatic!
+<a href="https://github.com">GitHub</a></p>
+<pre><code class="plaintext">https://github.com - automatic!
+[GitHub](https://github.com)
+</code></pre>
+<h1>Blockquotes</h1>
+<p>As Kanye West said:</p>
+<div class="blockquote-wrapper">
+<div class="blockquote-container">
+<div class="blockquote-border">&nbsp;</div>
+<div class="blockquote-content">
+<p>We're living the future so
+the present is our past.</p>
+</div></div></div>
+<pre><code class="plaintext">As Kanye West said:
+
+&gt; We're living the future so
+&gt; the present is our past.
+</code></pre>
+<div class="blockquote-wrapper">
+<div class="blockquote-container">
+<div class="blockquote-border">&nbsp;</div>
+<div class="blockquote-content">
+<pre><code class="plaintext">quoted codeblocks
+</code></pre>
+</div></div></div>
+<pre><code class="plaintext">&gt; ```
+&gt; quoted codeblocks
+&gt; ```
+</code></pre>
+<h1>Inline code</h1>
+<p>I think you should use an
+<code>&lt;addr&gt;</code> element here instead.</p>
+<pre><code class="plaintext">I think you should use an
+`&lt;addr&gt;` element here instead.
+</code></pre>
+<h1>Syntax highlighting</h1>
+<pre><code class="language-javascript">function fancyAlert(arg) {
+  if (arg) {
+    $.facebox({div: '#foo'})
+  }
+}
+</code></pre>
+<pre><code class="plaintext">```javascript
+function fancyAlert(arg) {
+  if (arg) {
+    $.facebox({div: '#foo'})
+  }
+}
+```
+</code></pre>
+<p>You can also simply indent your code by four spaces:</p>
+<pre><code class="plaintext">function fancyAlert(arg) {
+  if (arg) {
+    $.facebox({div: '#foo'})
+  }
+}
+</code></pre>
+<pre><code class="plaintext">    function fancyAlert(arg) {
+      if (arg) {
+        $.facebox({div: '#foo'})
+      }
+    }
+</code></pre>
+<p>Here's an example of Python code without syntax highlighting:</p>
+<pre><code class="plaintext">def foo():
+    if not bar:
+        return True
+</code></pre>
+<pre><code class="plaintext">```
+def foo():
+    if not bar:
+        return True
+```
+</code></pre>
+<h1>Task Lists</h1>
+<ul>
+<li style="list-style-type: none;"><input type="checkbox" checked="" disabled="" /> @mentions, #refs, <a href="">links</a>, <strong>formatting</strong>, and <!-- raw HTML omitted -->tags<!-- raw HTML omitted --> supported</li>
+<li style="list-style-type: none;"><input type="checkbox" checked="" disabled="" /> list syntax required (any unordered or ordered list supported)</li>
+<li style="list-style-type: none;"><input type="checkbox" checked="" disabled="" /> this is a complete item</li>
+<li style="list-style-type: none;"><input type="checkbox" disabled="" /> this is an incomplete item</li>
+</ul>
+<pre><code class="plaintext">- [x] @mentions, #refs, [links](), **formatting**, and &lt;del&gt;tags&lt;/del&gt; supported
+- [x] list syntax required (any unordered or ordered list supported)
+- [x] this is a complete item
+- [ ] this is an incomplete item
+</code></pre>
+<h1>Tables</h1>
+<p>You can create tables by assembling a list of words and dividing them with hyphens <code>-</code> (for the first row), and then separating each column with a pipe <code>|</code>:</p>
+<pre><code class="plaintext">First Header | Second Header
+------------ | -------------
+Content from cell 1 | Content from cell 2
+Content in the first column | Content in the second column
+</code></pre>
+<p>Would become:</p>
+<table>
+<thead>
+<tr>
+<th>First Header</th>
+<th>Second Header</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content from cell 1</td>
+<td>Content from cell 2</td>
+</tr>
+<tr>
+<td>Content in the first column</td>
+<td>Content in the second column</td>
+</tr>
+</tbody>
+</table>
+<h1>Strikethrough</h1>
+<p>Any word wrapped with two tildes (like <code>~~this~~</code>) will appear <del>crossed out</del>.</p>
+<h1>Emoji</h1>
+<p>GitHub supports emoji!<sup class="footnote-ref"><a href="#fn1" id="fnref1">1</a></sup> :sunglasses: (<code>:sunglasses:</code>)</p>
+<p>To see a list of every image they support, check out the <a href="https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md">Emoji Cheat Sheet</a>.</p>
+<hr>
+<section class="footnotes">
+<ol>
+<li id="fn1">
+<p>Not supported yet, here :( <a href="#fnref1" class="footnote-backref">↩</a></p>
+</li>
+</ol>
+</section>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
