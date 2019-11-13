@@ -105,7 +105,8 @@ def main()
             [:DEFAULT, :FOOTNOTES],
             [:tasklist, :strikethrough, :table]
         )
-        html = %Q(<!DOCTYPE html>
+        htmldoc = postprocess doc.to_html
+        html = (fout.path != '/dev/stdout')? %Q(<!DOCTYPE html>
 <html>
 #{HTML_HEAD}
 <body>
@@ -116,7 +117,7 @@ def main()
       <div class="panel-heading collapse-heading"><h3>xxx</h3></div>
       <div class="panel-body panel-collapsed">
 
-#{postprocess doc.to_html}
+#{htmldoc}
 
       </div>
     </div>
@@ -125,7 +126,7 @@ def main()
 
 </body>
 </html>
-)
+): htmldoc
         fout.write html
     rescue IOError => e
         p fin
